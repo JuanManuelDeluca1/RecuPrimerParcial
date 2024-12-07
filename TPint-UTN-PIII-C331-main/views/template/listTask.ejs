@@ -1,0 +1,29 @@
+<ul class="list-group">
+    <% tasks.forEach(task=> { %>
+        <li class="list-group-item d-flex justify-content-between align-items-center 
+  <%= task.completed ? 'completed' : '' %>">
+            <span>
+                <%= task.task %>
+                <small class="text-muted">(<%= new Date(task.createdAt).toLocaleString() %>)</small>
+            </span>
+            <div>
+                    <button class="btn btn-sm btn-succes update-task" 
+                    id= "<%= task.id %>"
+                    status="<%= task.completed %>"
+                    title="Upadte task">
+                        ✓
+                    </button>
+                    <button 
+                    class="btn btn-sm btn-danger delete-task" 
+                    id= "<%= task.id %>"
+                    title="Delete task">
+                    ✗
+                </button>
+            </div>
+        </li>
+        <% }) %>
+</ul>
+
+<% if (tasks.length===0) { %>
+    <p class="text-muted text-center mt-4">No tasks yet. Add a new task to get started!</p>
+    <% } %>
